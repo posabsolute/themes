@@ -1,0 +1,44 @@
+{% extends "/layout/base.html" %}
+{% from "/macros/sliders/slider.html" import slider %}
+{% from "/macros/sliders/bundle.html" import bundleSlider %}
+{% from "/macros/sliders/hero.html" import hero %}
+{% from "/macros/navigator.html" import navigator %}
+{% from "/macros/home-faq.html" import homeFaq %}
+{% from "/macros/sliders/script.html" import sliderScript %}
+
+{% block data %}
+<data type="navigator" />
+<data type="faq" />
+<data name="core" type="list" attributes="4320" />
+<data name="mobile" type="list" attributes="4334" />
+<data name="hero" type="list" products="222633,216359,195808,167032,140680" />
+{% endblock %}
+
+{% block content %}
+    <div class="row row--spaced">
+        <div id="sectionNavigation" class="col col-fix-4 d-none d-sm-block">
+            {{ navigator(nav.primary) }}
+        </div>
+        <div class="col col-xs-8 col-fix-inv-sm-4 ">
+            <div class="layout-content--section">
+                {{ hero(productLists.customLists.hero.products, i18n) }}
+            </div>
+            <div class="layout-content--section">
+                {{ slider(productLists.featuredapps.name, productLists.featuredapps.items, i18n, productLists.featuredapps.url ) }}
+            </div>
+            <div class="layout-content--section">
+                {{ slider(productLists.customLists.core.name, productLists.customLists.core.products, i18n, productLists.customLists.core.url) }}
+            </div>
+            <div class="layout-content--section">
+                {{ slider(productLists.customLists.mobile.name, productLists.customLists.mobile.products, i18n, productLists.customLists.mobile.url) }}
+            </div>
+            <div class="layout-content--section">
+                {{ slider(productLists.popularapps.name, productLists.popularapps.items, i18n, productLists.popularapps.url) }}
+            </div>
+            <div class="layout-content--section">
+                {{ homeFaq(common.faq.items[0], common.faq.i18n) }}
+            </div>
+        </div>
+    </div>
+{{ sliderScript() }}
+{% endblock %}
